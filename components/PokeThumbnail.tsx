@@ -70,14 +70,14 @@ const PokeThumbnail: React.FC<PokeThumbnailProps> = ({ id, name, image, type, he
 		items-center
 		justify-center
 		text-center
-		w-48 m-2 pb-7
+		w-48 m-2 
 		max-w-sm 
 		border border-gray-200 
 		rounded-lg shadow 
 		dark:bg-gray-800 dark:border-gray-700
 		bg-gradient-to-t from-white to-blue-300 
 		hover:from-blue-500 hover:to-green-500
-		${show === true ? 'h-65 pt-10 mt-20 pb-0' : 'h-32 mt-20 pt-16'}
+		${show === true ? 'h-65 pt-10 mt-20 pb-0' : 'h-32 mt-20 pt-16 pb-7'}
 	  `}>
 		<div className='absolute bg-white border border-gray-100 rounded-full -top-20'>
 			<img src={image} alt={name} className='w-28 h-32'/>
