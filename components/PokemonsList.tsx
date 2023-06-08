@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PokeThumbnail from './PokeThumbnail';
 
 const PokemonsList = () => {
   const BASEURL = 'https://pokeapi.co/api/v2/pokemon';
@@ -42,9 +43,18 @@ const PokemonsList = () => {
         items-center
         justify-center
       '>		
-        {allPokemons ? allPokemons.map((pokemon, index) => 
-          (<>{pokemon.name}</>)
-        ) : "Loading..."}
+        {allPokemons ? allPokemons.map((pokemon,index)=> 
+          <PokeThumbnail
+            key={index}
+            id={pokemon.id}
+            name={pokemon.name}
+            image={pokemon.sprites.other.dream_world.front_default}
+            type={pokemon.types[0].type.name}
+            height={pokemon.height}
+            weight={pokemon.weight}
+            stats={pokemon.stats}
+          />
+        ): "Loading..."}
       </div>
     </>
   )
