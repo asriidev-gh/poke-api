@@ -12,6 +12,54 @@ interface PokeThumbnailProps {
   
 const PokeThumbnail: React.FC<PokeThumbnailProps> = ({ id, name, image, type, height, weight, stats }) => {
   const [show,setShow] = useState(false);
+  const getColorType = (type: string) => {
+	switch (type) {
+	  case 'grass':
+	  case 'ghost':
+	    return 'bg-green-400';
+		break;
+
+	  case 'fighting':
+	  case 'fire':
+	    return 'bg-rose-700';
+		break;
+
+	  case 'psychic':
+	  case 'bug':
+	    return 'bg-lime-600';
+		break;
+
+	  case 'poison':
+	  case 'rock':
+	  case 'dark':
+	    return 'bg-teal-800';
+		break;
+	  
+	  case 'electric':
+	    return 'bg-yellow-300';
+		break;
+
+	  case 'ground':
+	    return 'bg-yellow-900';
+		break;
+
+	  case 'ice':
+	    return 'bg-cyan-300';
+		break;
+
+	  case 'water':	
+	    return 'bg-blue-500';
+		break;
+	
+	  case 'steel':	
+	    return 'bg-gray-500';
+		break;
+
+	  default:
+		return 'bg-cyan-400';
+	    break;
+	}
+  }
   
   return (
 	<div>
@@ -32,20 +80,18 @@ const PokeThumbnail: React.FC<PokeThumbnailProps> = ({ id, name, image, type, he
 		${show === true ? 'h-65 pt-10 mt-20 pb-0' : 'h-32 mt-20 pt-16'}
 	  `}>
 		<div className='absolute bg-white border border-gray-100 rounded-full -top-20'>
-		  <img src={image} alt={name} className='w-28 h-32'/>
+			<img src={image} alt={name} className='w-28 h-32'/>
 		</div>
 		
 		<div className="mt-8 pb-5">
 		  <small className='text-gray-800'>#0{id}</small>&nbsp;{name.toUpperCase()}
 		  
-		  <div className={`mt-1 text-xs text-white bg-blue-300 rounded-full`}>
+		  <div className={`mt-1 text-xs text-white ${getColorType(type)} rounded-full`}>
 			{type}
 		  </div>
 
-		  <button onClick={()=>setShow(!show)}>
-			<span className='text-xs'>
-			  { show === true ? "Hide Stats..." : "Show Stats..." }
-			</span>
+		  <button onClick={()=>setShow(!show)}><span className='text-xs'>
+			{ show === true ? "Hide Stats..." : "Show Stats..." }</span>
 		  </button>
 
 		  <div className={`${show !== true ? 'hidden' : ''} flex flex-wrap flex-col items-start`}>
