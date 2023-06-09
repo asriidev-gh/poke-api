@@ -84,7 +84,8 @@ const PokeThumbnail: React.FC<PokeThumbnailProps> = ({ id, name, image, type, he
 		</div>
 		
 		<div className="mt-8 pb-5">
-		  <small className='text-gray-800'>#0{id}</small>&nbsp;{name.toUpperCase()}
+		  <small className='text-gray-800'>#0{id}</small>&nbsp;
+		  <span data-testid="pokemon-name">{name.toUpperCase()}</span>
 		  
 		  <div className={`mt-1 text-xs text-white ${getColorType(type)} rounded-full`}>
 			{type}
